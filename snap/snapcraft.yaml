@@ -1,0 +1,36 @@
+name: iotdevice-device-controller
+base: core20
+version: '0.1'
+summary: Device Controller REST API for Demo Purposes
+description: |
+  This is the REST API that provides data to the main UI
+  application.
+
+grade: stable
+confinement: strict
+
+apps:
+  device-controller:
+    command: bin/uvicorn app.main:app
+
+  device-controller-service:
+    command: launch.sh
+    daemon: simple
+    plugs:
+      - network
+      - network-bind
+
+parts:
+  device-controller:
+    plugin: python
+    source: device-controller
+    requirements: 
+      - requirements.txt
+    
+  python-source:
+    source: device-controller
+    plugin: dump
+
+  launcher:
+    source: bin
+    plugin: dump
