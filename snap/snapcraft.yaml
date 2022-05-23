@@ -7,7 +7,7 @@ description: |
   application.
 
 grade: stable
-confinement: strict
+confinement: devmode
 
 apps:
   device-controller:
