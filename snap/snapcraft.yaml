@@ -7,7 +7,12 @@ description: |
   application.
 
 grade: stable
-confinement: devmode
+confinement: strict
+
+architectures:
+  - build-on: arm64
+  - build-on: amd64
+
 
 apps:
   device-controller:
