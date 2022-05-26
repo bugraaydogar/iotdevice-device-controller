@@ -1,0 +1,28 @@
+language: shell
+dist: focal
+os: linux
+virt: vm
+group: edge
+arch:
+  - arm64-graviton2
+  - amd64
+
+env:
+  global:
+before_install:
+  - openssl aes-256-cbc -K $encrypted_127dafa4e21c_key -iv $encrypted_127dafa4e21c_iv -in bugraaydogar-credentials.login.enc -out bugraaydogar-credentials.login -d
+addons:
+  snaps:
+    - name: snapcraft
+      channel: stable
+      confinement: classic
+script:
+  - snapcraft --destructive-mode
+
+after_failure:
+  - sudo journalctl -u snapd
+deploy:
+  - provider: snap
+    snap: iot*.snap
+    channel: edge
+    skip_cleanup: true
