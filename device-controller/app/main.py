@@ -19,5 +19,5 @@ app.add_middleware(
 
 @app.get("/battery-level")
 def batteryLevel():
-    return {"battery": 115}
+    return {"battery": 85}
 
