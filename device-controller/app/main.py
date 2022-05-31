@@ -19,4 +19,4 @@ app.add_middleware(
 
 @app.get("/battery-level")
 def batteryLevel():
-    return {"battery": 50 + int(random.random() * 20.0 - 10.0)}
+    return {"battery": 50 + int(random.random() * 50.0 - 25.0)}
