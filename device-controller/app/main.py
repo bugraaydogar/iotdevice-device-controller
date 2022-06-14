@@ -1,6 +1,8 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-import random
+from random import *
+
+MAX_SPEED = 100
 
 app = FastAPI()
 
@@ -17,6 +19,6 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-@app.get("/battery-level")
+@app.get("/speed-level")
 def batteryLevel():
-    return {"battery": 50 + int(random.random() * 50.0 - 25.0)}
+    return {"speed": randint(0, 100), "maxSpeed": MAX_SPEED}
