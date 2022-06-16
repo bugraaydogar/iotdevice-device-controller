@@ -14,7 +14,7 @@ before_install:
 addons:
   snaps:
     - name: snapcraft
-      channel: stable
+      channel: 6.x/stable
       confinement: classic
 script:
   - snapcraft --destructive-mode
