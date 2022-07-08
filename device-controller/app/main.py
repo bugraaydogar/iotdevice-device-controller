@@ -2,7 +2,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from random import *
 
-MAX_SPEED = 98
+MAX_SPEED = 198
 
 app = FastAPI()
 
