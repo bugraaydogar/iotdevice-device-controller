@@ -2,7 +2,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from random import *
 
-BATTERY_LEVEL = 80
+BATTERY_LEVEL = 105
 
 app = FastAPI()
 
