@@ -1,26 +1,40 @@
-from fastapi import FastAPI
-from fastapi.middleware.cors import CORSMiddleware
-from random import *
+from fastapi import FastAPI, APIRouter
+
 
 BATTERY_LEVEL = 55
+SPEED_LEVEL = 90
+ANGULAR_FREEDOM = 245
+VERSION_V1 = 1.0
 
 app = FastAPI()
 
-origins = [
-    "http://localhost",
-    "http://localhost:4000",
-    "http://127.0.0.1:4000",
-]
+version_v1 = APIRouter()
 
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=origins,
-    allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
-)
+# Common API
+@app.get("/version")
+async def get_api_version():
+    return {"version": VERSION_V1}
 
-@app.get("/battery-level")
-def batteryLevel():
-    return {"battery": BATTERY_LEVEL}
+# Features API
+@version_v1.get("/features")
+async def get_features_list():
+    return {"features": ["speed", "batterylevel", "angularfreedom"]}
 
+
+# Battery API
+@version_v1.get("/batterylevel")
+async def get_battery_level_v1():
+    return {"level": BATTERY_LEVEL}
+
+# Speed API
+@version_v1.get("/speed")
+async def get_speed_level_v1():
+    return {"speed": SPEED_LEVEL}
+
+# Robotic API
+@version_v1.get("/angularfreedom")
+async def get_angularfreedom_v1():
+    return {"angle": ANGULAR_FREEDOM}
+
+
+app.include_router(version_v1, prefix='/v1')
