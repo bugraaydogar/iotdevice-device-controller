@@ -1,5 +1,5 @@
 from fastapi import FastAPI, APIRouter
-
+from fastapi.middleware.cors import CORSMiddleware
 
 BATTERY_LEVEL = 90
 BATTERY_LEVEL_MAX = 100
@@ -10,6 +10,14 @@ ANGULAR_FREEDOM_ROTATION = "left"
 VERSION_V1 = 2.0
 
 app = FastAPI()
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 version_v1 = APIRouter()
 version_v2 = APIRouter()
