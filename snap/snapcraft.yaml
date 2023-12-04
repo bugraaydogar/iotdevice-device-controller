@@ -1,6 +1,6 @@
 name: iotdevice-device-controller
-base: core20
-version: '0.1'
+base: core22
+version: '22'
 summary: Device Controller REST API for Demo Purposes
 description: |
   This is the REST API that provides data to the main UI
@@ -28,7 +28,7 @@ parts:
   device-controller:
     plugin: python
     source: device-controller
-    requirements:
+    python-requirements:
       - requirements.txt
 
   python-source:
