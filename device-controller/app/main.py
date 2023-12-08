@@ -7,7 +7,7 @@ SPEED_LEVEL = 90
 SPEED_LEVEL_MAX = 100
 ANGULAR_FREEDOM = 245
 ANGULAR_FREEDOM_ROTATION = "left"
-VERSION_V1 = 2.0
+VERSION = 1.0
 
 app = FastAPI()
 
@@ -25,7 +25,7 @@ version_v2 = APIRouter()
 # Common API
 @app.get("/version")
 async def get_api_version():
-    return {"version": VERSION_V1}
+    return {"version": VERSION}
 
 # Features API
 @version_v1.get("/features")
