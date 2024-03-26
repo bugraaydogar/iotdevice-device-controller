@@ -12,6 +12,7 @@ confinement: strict
 architectures:
   - build-on: arm64
   - build-on: amd64
+  - build-on: riscv64
 
 apps:
   device-controller:
